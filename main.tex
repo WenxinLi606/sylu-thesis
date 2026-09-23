@@ -1,0 +1,38 @@
+% !TeX program = xelatex
+% 开箱即用：portablefonts；使用自备的确认版字体：改为 schoolfonts。
+% twoside 保留双面打印的必要空白页；电子阅读可改为 oneside。
+\documentclass[twoside,doctor,fontset=fandol,portablefonts]{syluthesis}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\input{thesis-info}
+\hypersetup{pdftitle={沈阳理工大学博士学位论文模板},pdfauthor={模板示例}}
+
+\begin{document}
+\makesylutitle
+\frontmatter
+\input{chapters/abstract}
+\tableofcontents
+\listoffigures
+\listoftables
+
+\mainmatter
+\input{chapters/chapter1}
+\input{chapters/chapter2}
+\input{chapters/chapter3}
+\input{chapters/chapter4}
+% 增加章节时创建新的 .tex 文件，并在这里继续 \input。
+
+\begingroup
+\clubpenalty=10000
+\widowpenalty=10000
+% 沿用确认版的参考文献样式；如学校要求改变，请统一核对。
+\bibliographystyle{gbt7714-2005-numerical}
+\bibliography{reference/references}
+\endgroup
+
+\appendix
+\input{chapters/appendix}
+\backmatter
+\input{chapters/acknowledgement}
+\input{chapters/resume}
+\end{document}

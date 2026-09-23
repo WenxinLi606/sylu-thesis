@@ -1,0 +1,66 @@
+% Chinese title page matching 扉页.docx and its native WPS export 扉页.pdf.
+% The DOCX font aliases 宋体 / 黑体 map to these exact WPS fonts.
+% Keep them local to the cover; the main text still uses SimSun / SimHei.
+% Cover font families are configured by sylu-fonts.tex.
+
+% Coordinates are in PDF points (bp), from the top-left corner of A4.
+% Word: 90 bp side margins, 72 bp top/bottom margins, 31.2 bp table rows.
+% Baselines account for the actual font metrics in the native WPS export.
+\newcommand{\sylu@coverat}[3]{%
+  \put(#1,-#2){\makebox[0pt][l]{#3}}}
+\newcommand{\sylu@coverrow}[3]{%
+  \sylu@coverat{95.40}{#1}{\makebox[106.64bp][s]{#2}}%
+  \sylu@coverat{207.84}{#1}{#3}}
+\newcommand{\sylu@coverdateat}[3]{%
+  \sylu@coverat{#1}{#2}{\raisebox{0.12bp}{#3}}}
+
+\newcommand{\makecover}{%
+  \sylu@rightsinglepage
+  \AddToHookNext{shipout/foreground}{%
+    \begingroup
+      \setlength{\unitlength}{1bp}%
+      \normalfont\rmfamily\sylu@coversong
+      \fontsize{14bp}{31.2bp}\selectfont
+      \xeCJKsetup{CJKglue=\hskip 0pt,CJKecglue=\hskip 0pt,
+        CJKspace=true,PunctStyle=plain}%
+      \spaceskip=7bp\relax \xspaceskip=7bp\relax
+      \renewcommand{\sylu@cnpunct}[1]{{\sylu@coversong\char"##1}}%
+      \sylu@coverat{90.00}{92.21}{{\sylu@coverhei 分类号}}%
+      \sylu@coverat{180.96}{92.09}{\sylu@classification}%
+      \sylu@coverat{279.00}{92.21}{{\sylu@coverhei 密级}}%
+      \sylu@coverat{335.04}{92.21}{{\sylu@coverhei\sylu@securitylevel}}%
+      \sylu@coverat{132.00}{94.31}{\rule{126bp}{0.72bp}}%
+      \sylu@coverat{314.00}{94.56}{\rule{76.95bp}{0.72bp}}%
+      \sylu@coverat{90.00}{123.77}{UDC}%
+      \sylu@coverat{182.52}{123.77}{\sylu@udc}%
+      \sylu@coverat{126.60}{125.96}{\rule{129.45bp}{0.72bp}}%
+      \sylu@coverat{220.68}{188.45}{{\fontsize{22bp}{44bp}\selectfont
+        学\hspace{22bp}位\hspace{22bp}论\hspace{22bp}文}}%
+      \sylu@coverat{297.60}{233.93}{\makebox[0pt][c]{%
+        \sylu@coverhei\fontsize{18bp}{31.2bp}\selectfont\sylu@title}}%
+      \sylu@coverrow{357.41}{作\hfill 者\hfill 姓\hfill 名\hfill ：}{\sylu@author}%
+      \sylu@coverrow{388.61}{指\hfill 导\hfill 教\hfill 师\hfill ：}{%
+        \sylu@supervisor\hspace{14bp}\sylu@supervisortitle
+        \ifx\sylu@cosupervisor\@empty\else
+          \hspace{21bp}\sylu@cosupervisor\fi}%
+      \sylu@coverrow{419.81}{导\hfill 师\hfill 组\hfill ：}{\sylu@tutorgroup}%
+      \sylu@coverrow{451.01}{申\hfill 请\hfill 学\hfill 位\hfill 级\hfill 别\hfill ：}{\sylu@degree}%
+      \sylu@coverat{299.52}{451.01}{\makebox[94.04bp][s]{学\hfill 科\hfill 类\hfill 别\hfill ：}}%
+      \sylu@coverat{399.24}{451.01}{\sylu@degreecategory}%
+      \sylu@coverrow{482.21}{学\hfill 科\hfill 名\hfill 称\hfill ：}{\sylu@discipline}%
+      \sylu@coverrow{513.41}{特\hfill 需\hfill 项\hfill 目\hfill 名\hfill 称\hfill ：}{\sylu@specialprogram}%
+      \sylu@coverrow{544.61}{论\hfill 文\hfill 提\hfill 交\hfill 日\hfill 期\hfill ：}{}%
+      \sylu@coverdateat{207.84}{544.61}{\sylu@submitdate}%
+      \sylu@coverat{299.52}{544.61}{论文答辩日期：}%
+      \sylu@coverdateat{399.24}{544.61}{\sylu@defensedate}%
+      \sylu@coverrow{575.81}{学\hfill 位\hfill 授\hfill 予\hfill 日\hfill 期\hfill ：}{}%
+      \sylu@coverdateat{207.84}{575.81}{\sylu@awarddate}%
+      \sylu@coverrow{607.01}{评\hfill 阅\hfill 人\hfill ：}{\sylu@reviewer}%
+      % This eight-character label uses its natural width in the Word file.
+      \sylu@coverat{95.40}{638.21}{答辩委员会主席：}%
+      \sylu@coverat{207.84}{638.21}{\sylu@chairman}%
+      \sylu@coverat{220.68}{731.81}{沈\hspace{14bp}阳\hspace{14bp}理\hspace{14bp}工\hspace{14bp}大\hspace{14bp}学}%
+      \sylu@coverdateat{255.60}{763.01}{\sylu@date}%
+    \endgroup
+  }%
+  \null\clearpage}

@@ -1,0 +1,42 @@
+% Loaded inside syluthesis.cls; @ is a letter here.
+% File names avoid dependence on the operating system's font-name registry.
+\setmainfont{texgyretermes-regular.otf}[BoldFont=texgyretermes-bold.otf,ItalicFont=texgyretermes-italic.otf,BoldItalicFont=texgyretermes-bolditalic.otf]
+\setsansfont{texgyreheros-regular.otf}[BoldFont=texgyreheros-bold.otf,ItalicFont=texgyreheros-italic.otf,BoldItalicFont=texgyreheros-bolditalic.otf]
+\setmonofont{texgyrecursor-regular.otf}[BoldFont=texgyrecursor-bold.otf,ItalicFont=texgyrecursor-italic.otf,BoldItalicFont=texgyrecursor-bolditalic.otf]
+\setCJKmainfont{FandolSong-Regular.otf}[BoldFont=FandolSong-Bold.otf,ItalicFont=FandolKai-Regular.otf]
+\setCJKfamilyfont{zhsong}{FandolSong-Regular.otf}[BoldFont=FandolSong-Bold.otf,ItalicFont=FandolKai-Regular.otf]
+\setCJKsansfont{FandolHei-Regular.otf}
+\setCJKfamilyfont{zhhei}{FandolHei-Regular.otf}
+\setCJKfamilyfont{syluCoverSong}{FandolSong-Regular.otf}
+\setCJKfamilyfont{syluCoverHei}{FandolHei-Regular.otf}
+\newCJKfontfamily\sylukai{FandolKai-Regular.otf}
+\ifsylu@schoolfonts
+  % Optional private fonts: never required by the public source package.
+  \IfFileExists{simsun.ttc}{%
+    \setCJKmainfont[Path=./,FontIndex=0,AutoFakeBold=2,AutoFakeSlant=0.2]{simsun.ttc}%
+    \setCJKfamilyfont{zhsong}[Path=./,FontIndex=0,AutoFakeBold=2,AutoFakeSlant=0.2]{simsun.ttc}%
+  }{\ClassWarningNoLine{syluthesis}{simsun.ttc absent; using Fandol Song}}
+  \IfFileExists{SimHei.ttf}{%
+    \setCJKsansfont[Path=./]{SimHei.ttf}%
+    \setCJKfamilyfont{zhhei}[Path=./]{SimHei.ttf}%
+  }{\ClassWarningNoLine{syluthesis}{SimHei.ttf absent; using Fandol Hei}}
+  \IfFileExists{fonts/cover/HYShuSongErKW.ttf}{%
+    \setCJKfamilyfont{syluCoverSong}[Path=fonts/cover/]{HYShuSongErKW.ttf}%
+  }{\ClassWarningNoLine{syluthesis}{HYShuSongErKW.ttf absent; cover uses Fandol}}
+  \IfFileExists{fonts/cover/HYZhongHeiKW.ttf}{%
+    \setCJKfamilyfont{syluCoverHei}[Path=fonts/cover/]{HYZhongHeiKW.ttf}%
+  }{\ClassWarningNoLine{syluthesis}{HYZhongHeiKW.ttf absent; cover uses Fandol}}
+  % Supply all four Times files together, or use an installed family.
+  \IfFileExists{fonts/latin/times.ttf}{%
+    \setmainfont{times.ttf}[Path=fonts/latin/,
+      BoldFont=timesbd.ttf,ItalicFont=timesi.ttf,BoldItalicFont=timesbi.ttf]
+  }{%
+    \IfFontExistsTF{Times New Roman}{\setmainfont{Times New Roman}}{%
+      \ClassWarningNoLine{syluthesis}{Times New Roman absent; using TeX Gyre Termes}}}
+  \IfFontExistsTF{Arial}{\setsansfont{Arial}}{}
+  \IfFontExistsTF{Courier New}{\setmonofont{Courier New}}{}
+\fi
+\newcommand{\sylusong}{\CJKfamily{zhsong}}
+\newcommand{\syluhei}{\CJKfamily{zhhei}}
+\newcommand{\sylu@coversong}{\CJKfamily{syluCoverSong}}
+\newcommand{\sylu@coverhei}{\CJKfamily{syluCoverHei}}

@@ -1,0 +1,33 @@
+# Generated TeX files (PDF figures remain trackable).
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.lof
+*.lot
+*.out
+*.toc
+*.xdv
+*.synctex.gz
+*.nav
+*.snm
+*.vrb
+*.bcf
+*.run.xml
+/main.pdf
+/build/
+/dist/
+.DS_Store
+__MACOSX/
+__pycache__/
+# Private optional font files must not enter the public repository.
+*.ttf
+*.ttc
+*.otf
+# Local backups and editors.
+*.bak
+*~
+.vscode/
+.idea/

@@ -1,0 +1,69 @@
+\chapter{基本方法与排版示例}
+\label{chap:examples}
+\section{公式与符号说明}
+公式应作为论述的一部分出现，先介绍计算目的，再给出表达式。样本均值可写为
+\begin{equation}
+\bar{x}=\frac{1}{n}\sum_{i=1}^{n}x_i .
+\label{eq:mean}
+\end{equation}
+\begin{formulaexplain}
+\item[$x_i$] 第 $i$ 个观测值；
+\item[$n$] 样本数量，且 $n>0$；
+\item[$\bar{x}$] 样本均值。
+\end{formulaexplain}
+引用公式时使用标签，例如由\eqrefcn{eq:mean}可计算观测数据的平均水平。多行公式可使用对齐环境：
+\begin{align}
+ e_i &= x_i-\bar{x},\\
+ s^2 &= \frac{1}{n-1}\sum_{i=1}^{n}e_i^2,\qquad n>1.
+\label{eq:variance}
+\end{align}
+\begin{definition}[样本集合]
+由 $n$ 个观测值组成的集合记为 $\mathcal{X}=\{x_1,\ldots,x_n\}$。
+\end{definition}
+\begin{theorem}[离均差性质]
+对于按\eqrefcn{eq:mean}计算的均值，有 $\sum_{i=1}^{n}(x_i-\bar{x})=0$。
+\end{theorem}
+\begin{proof}
+将均值定义代入求和式，得到 $\sum_{i=1}^{n}x_i-n\bar{x}=0$。
+\end{proof}
+
+\section{插图与双语图题}
+图应尽量靠近正文首次引用的位置。\figrefcn{fig:workflow}是直接由 LaTeX 绘制的通用流程示意图，不依赖原论文图片。实际插入外部图片时可将文件放入 figures 文件夹，并使用插图命令。
+\begin{figure}[htbp]
+\centering
+\input{figures/workflow}
+\sylufigcaption[fig:workflow]{研究流程示意图}{Illustration of a research workflow}
+\end{figure}
+正文应解释图中的要素及其联系，避免只写“结果如图所示”。图中的文字应清晰可辨，比例和标注方式应与正文保持一致。
+
+\section{三线表与数据说明}
+\tabrefcn{tab:demo}展示三线表和双语表题。表内数值仅用于演示排版，不对应任何真实方法的性能。正式论文应写明单位、统计方式和实验条件。
+\begin{table}[htbp]
+\sylutabcaption[tab:demo]{虚构数据排版示例}{Typesetting example with fictional data}
+\begin{tabular}{lcc}
+\toprule
+方法 & 示例指标一 & 示例指标二（秒）\\
+\midrule
+方法甲 & 0.80 & 1.20\\
+方法乙 & 0.85 & 1.35\\
+方法丙 & 0.88 & 1.50\\
+\bottomrule
+\end{tabular}
+\end{table}
+\section{算法环境}
+算法\ref{alg:mean}展示输入、输出和循环的排版。伪代码宜突出主要步骤，具体实现细节可以放在附录中。
+\begin{algorithm}[htbp]
+\caption{样本均值计算示例}\label{alg:mean}
+\begin{algorithmic}[1]
+\REQUIRE 观测序列 $x_1,\ldots,x_n$，其中 $n>0$
+\ENSURE 样本均值 $\bar{x}$
+\STATE $s\leftarrow 0$
+\FOR{$i=1,\ldots,n$}
+\STATE $s\leftarrow s+x_i$
+\ENDFOR
+\STATE $\bar{x}\leftarrow s/n$
+\RETURN $\bar{x}$
+\end{algorithmic}
+\end{algorithm}
+\section{本章小结}
+本章展示常见学术内容的排版方式。复制示例时应保留标签与引用的对应关系，并将说明文字替换为实际研究内容。
